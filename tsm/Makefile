@@ -1,4 +1,5 @@
 CFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-format-overflow
+CFLAGS += -I/usr/local/include
 
 OBJ=wcwidth.o shl-htable.o\
 	tsm-render.o tsm-screen.o tsm-selection.o\

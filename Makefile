@@ -6,11 +6,12 @@ BINDIR ?= $(PREFIX)/bin
 
 VERSION="0.5.0"
 
-CFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-format-overflow
+CFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-format-overflow -I/usr/local/include -I/usr/local/include/libepoll-shim
 override CFLAGS += -DVERSION=\"$(VERSION)\"
 
+
 VPATH=$(WAYLAND_PROTOCOLS_DIR)/stable/xdg-shell:$(WAYLAND_PROTOCOLS_DIR)/unstable/xdg-decoration
-LIBS=-lrt -lm -lutil -lwayland-client -lwayland-cursor -lxkbcommon -Ltsm -lhtsm
+LIBS=-L/usr/local/lib -R/usr/local/lib -lm -lutil -lwayland-client -lwayland-cursor -lxkbcommon -Ltsm -lhtsm -lepoll-shim
 OBJ=xdg-shell.o xdg-decoration-unstable-v1.o gtk-primary-selection.o glyph.o main.o
 GEN=xdg-shell.c xdg-shell.h xdg-decoration-unstable-v1.c \
 	xdg-decoration-unstable-v1.h gtk-primary-selection.c gtk-primary-selection.h
